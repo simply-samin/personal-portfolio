@@ -139,10 +139,18 @@ class AboutController extends Controller
                 "multi_image" => $save_url,
             ]);
             $notification = [
-                "message" => "Multi Image Updated Successfully",
+                "message" => "Multi image updated successfully",
                 "alert-type" => "success",
             ];
 
+            return redirect()
+                ->route("all.multi.image")
+                ->with($notification);
+        } else {
+            $notification = [
+                "message" => "Multi Image not updated",
+                "alert-type" => "info",
+            ];
             return redirect()
                 ->route("all.multi.image")
                 ->with($notification);
