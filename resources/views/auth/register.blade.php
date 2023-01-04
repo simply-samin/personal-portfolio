@@ -84,6 +84,13 @@
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
+                                    <input class="form-control" id="key" type="text"
+                                        name="key" required="" placeholder="Key">
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3 row">
+                                <div class="col-12">
                                     <div class="custom-control custom-checkbox">
 
                                     </div>
