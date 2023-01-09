@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use App\Models\About;
 use App\Models\MultiImage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Image;
 
 class AboutController extends Controller
@@ -24,7 +24,7 @@ class AboutController extends Controller
         if ($request->file("about_image")) {
             $image = $request->file("about_image");
             $name_gen =
-                hexdec(uniqid()) . "." . $image->getClientOriginalExtension(); // 3434343443.jpg
+            hexdec(uniqid()) . "." . $image->getClientOriginalExtension(); // 3434343443.jpg
 
             Image::make($image)
                 ->resize(523, 605)
@@ -77,13 +77,23 @@ class AboutController extends Controller
 
     public function StoreMultiImage(Request $request)
     {
+        $request->validate(
+            [
+                "multi_image" => "required",
+            ],
+            [
+                "multi_image" => "Please insert a file to upload",
+
+            ]
+        );
+
         $image = $request->file("multi_image");
 
         foreach ($image as $multi_image) {
             $name_gen =
-                hexdec(uniqid()) .
-                "." .
-                $multi_image->getClientOriginalExtension();
+            hexdec(uniqid()) .
+            "." .
+            $multi_image->getClientOriginalExtension();
 
             Image::make($multi_image)
                 ->resize(220, 220)
@@ -128,7 +138,7 @@ class AboutController extends Controller
         if ($request->file("multi_image")) {
             $image = $request->file("multi_image");
             $name_gen =
-                hexdec(uniqid()) . "." . $image->getClientOriginalExtension(); // 3434343443.jpg
+            hexdec(uniqid()) . "." . $image->getClientOriginalExtension(); // 3434343443.jpg
 
             Image::make($image)
                 ->resize(220, 220)

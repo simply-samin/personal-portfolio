@@ -13,7 +13,7 @@
     <div class="tab-content" id="portfolioTabContent">
 
         @php
-            $project = App\Models\Project::latest()->get();
+            $projects = App\Models\Project::latest()->get();
         @endphp
 
 
@@ -23,15 +23,14 @@
                     <div class="col">
                         <div class="portfolio__active">
 
-                            @foreach ($project as $item)
+                            @foreach ($projects as $item)
                                 <div class="portfolio__item">
                                     <div class="portfolio__thumb">
                                         <img src="{{ asset($item->project_image) }}" alt="">
                                     </div>
                                     <div class="portfolio__overlay__content">
-                                        <span>{{ $item->project_name }}</span>
-                                        <h4 class="title"><a
-                                                href="{{ route('project.details', $item->id) }}">{{ $item->project_title }}</a>
+                                        <h4 class="title">
+                                            {{ $item->project_title }}
                                         </h4>
                                         <a href="{{ route('project.details', $item->id) }}" class="link">Project
                                             Details</a>

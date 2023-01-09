@@ -38,11 +38,9 @@
 
 
                                 <tbody>
-                                    @php($i = 1)
-                                    @foreach ($project as $item)
+                                    @foreach ($projects as $key => $item)
                                         <tr>
-                                            <td> {{ $i++ }} </td>
-                                            <td> {{ $item->project_name }} </td>
+                                            <td> {{ $key + 1 }} </td>
                                             <td> {{ $item->project_title }} </td>
                                             <td> <img src="{{ asset($item->project_image) }}"
                                                     style="width: 60px; height: 50px;"> </td>

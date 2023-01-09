@@ -22,6 +22,9 @@
                                     <div class="col-sm-10">
                                         <input name="multi_image[]" class="form-control" type="file" id="image"
                                             multiple="">
+                                        @error('multi_image')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!-- end row -->
@@ -37,8 +40,6 @@
                                 <!-- end row -->
                                 <input type="submit" class="btn btn-info waves-effect waves-light" value="Add Multi Image">
                             </form>
-
-
 
                         </div>
                     </div>

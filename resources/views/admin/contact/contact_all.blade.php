@@ -39,20 +39,20 @@
 
 
                                 <tbody>
-                                    @php($i = 1)
-                                    @foreach ($contacts as $item)
+                                    @foreach ($contacts as $key => $contact)
                                         <tr>
-                                            <td> {{ $i++ }} </td>
-                                            <td> {{ $item->name }} </td>
-                                            <td> {{ $item->email }} </td>
-                                            <td> {{ $item->phone }} </td>
-                                            <td> {{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }} </td>
+                                            <td> {{ $key + 1 }} </td>
+                                            <td> {{ $contact->name }} </td>
+                                            <td> {{ $contact->email }} </td>
+                                            <td> {{ $contact->phone }} </td>
+                                            <td> {{ Carbon\Carbon::parse($contact->created_at)->diffForHumans() }} </td>
 
                                             <td>
 
 
-                                                <a href="{{ route('delete.message', $item->id) }}" class="btn btn-danger sm"
-                                                    title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i>
+                                                <a href="{{ route('delete.message', $contact->id) }}"
+                                                    class="btn btn-danger sm" title="Delete Data" id="delete"> <i
+                                                        class="fas fa-trash-alt"></i>
                                                 </a>
 
                                             </td>

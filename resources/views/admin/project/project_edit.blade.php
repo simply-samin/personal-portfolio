@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Project Edit Page </h4>
+                            <h4 class="card-title"> Project Edit Page </h4>
 
                             <form method="post" action="{{ route('update.project') }}" enctype="multipart/form-data">
                                 @csrf
@@ -18,19 +18,7 @@
                                 <input type="hidden" name="id" value="{{ $project->id }}">
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Project Name</label>
-                                    <div class="col-sm-10">
-                                        <input name="project_name" class="form-control" type="text"
-                                            value="{{ $project->project_name }}" id="example-text-input">
-                                        @error('project_name')
-                                            <span class="text-danger"> {{ $message }} </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <!-- end row -->
-
-                                <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Title </label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Project Title </label>
                                     <div class="col-sm-10">
                                         <input name="project_title" class="form-control" type="text"
                                             value="{{ $project->project_title }}" id="example-text-input">
@@ -45,18 +33,18 @@
 
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Description
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Project Description
                                     </label>
                                     <div class="col-sm-10">
                                         <textarea id="elm1" name="project_description">
-      {{ $project->project_description }}
-      </textarea>
+                                            {{ $project->project_description }}
+                                        </textarea>
                                     </div>
                                 </div>
                                 <!-- end row -->
 
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Image </label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Project Image </label>
                                     <div class="col-sm-10">
                                         <input name="project_image" class="form-control" type="file" id="image">
                                     </div>

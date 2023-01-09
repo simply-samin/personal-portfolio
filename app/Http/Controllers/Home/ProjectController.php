@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Image;
 
@@ -12,8 +12,8 @@ class ProjectController extends Controller
 {
     public function AllProject()
     {
-        $project = Project::latest()->get();
-        return view("admin.project.project_all", compact("project"));
+        $projects = Project::latest()->get();
+        return view("admin.project.project_all", compact("projects"));
     } // End Method
 
     public function AddProject()
@@ -25,19 +25,20 @@ class ProjectController extends Controller
     {
         $request->validate(
             [
-                "project_name" => "required",
                 "project_title" => "required",
+                "project_description" => "required",
                 "project_image" => "required",
             ],
             [
-                "project_name.required" => "Project Name is Required",
-                "project_title.required" => "Project Titile is Required",
+                "project_title.required" => "Project title is required",
+                "project_description.required" => "Project description is required",
+                "project_image.required" => "Project image is required",
             ]
         );
 
         $image = $request->file("project_image");
         $name_gen =
-            hexdec(uniqid()) . "." . $image->getClientOriginalExtension(); // 3434343443.jpg
+        hexdec(uniqid()) . "." . $image->getClientOriginalExtension(); // 3434343443.jpg
 
         Image::make($image)
             ->resize(1020, 519)
@@ -45,7 +46,6 @@ class ProjectController extends Controller
         $save_url = "upload/project/" . $name_gen;
 
         Project::insert([
-            "project_name" => $request->project_name,
             "project_title" => $request->project_title,
             "project_description" => $request->project_description,
             "project_image" => $save_url,
@@ -74,7 +74,7 @@ class ProjectController extends Controller
         if ($request->file("project_image")) {
             $image = $request->file("project_image");
             $name_gen =
-                hexdec(uniqid()) . "." . $image->getClientOriginalExtension(); // 3434343443.jpg
+            hexdec(uniqid()) . "." . $image->getClientOriginalExtension(); // 3434343443.jpg
 
             Image::make($image)
                 ->resize(1020, 519)
@@ -82,7 +82,6 @@ class ProjectController extends Controller
             $save_url = "upload/project/" . $name_gen;
 
             Project::findOrFail($project_id)->update([
-                "project_name" => $request->project_name,
                 "project_title" => $request->project_title,
                 "project_description" => $request->project_description,
                 "project_image" => $save_url,
@@ -97,7 +96,6 @@ class ProjectController extends Controller
                 ->with($notification);
         } else {
             Project::findOrFail($project_id)->update([
-                "project_name" => $request->project_name,
                 "project_title" => $request->project_title,
                 "project_description" => $request->project_description,
             ]);
@@ -138,7 +136,7 @@ class ProjectController extends Controller
 
     public function HomeProject()
     {
-        $project = Project::latest()->get();
-        return view("frontend.project", compact("project"));
+        $projects = Project::latest()->get();
+        return view("frontend.project", compact("projects"));
     } // End Method
 }

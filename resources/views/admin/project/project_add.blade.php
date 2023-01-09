@@ -10,24 +10,10 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Protfolio Page </h4>
+                            <h4 class="card-title">Project Page </h4>
 
                             <form method="post" action="{{ route('store.project') }}" enctype="multipart/form-data">
                                 @csrf
-
-
-
-                                <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Name</label>
-                                    <div class="col-sm-10">
-                                        <input name="project_name" class="form-control" type="text"
-                                            id="example-text-input">
-                                        @error('project_name')
-                                            <span class="text-danger"> {{ $message }} </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <!-- end row -->
 
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Title </label>
@@ -48,8 +34,10 @@
                                     </label>
                                     <div class="col-sm-10">
                                         <textarea id="elm1" name="project_description">
-
-      </textarea>
+                                        </textarea>
+                                        @error('project_description')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!-- end row -->
@@ -58,6 +46,9 @@
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Protfolio Image </label>
                                     <div class="col-sm-10">
                                         <input name="project_image" class="form-control" type="file" id="image">
+                                        @error('project_image')
+                                            <span class="text-danger"> {{ $message }} </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!-- end row -->
