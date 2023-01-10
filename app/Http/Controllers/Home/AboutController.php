@@ -135,7 +135,7 @@ class AboutController extends Controller
     {
         $multi_image_id = $request->id;
 
-        if ($request->file("multi_image")) {
+        if ($request->filled("multi_image")) {
             $image = $request->file("multi_image");
             $name_gen =
             hexdec(uniqid()) . "." . $image->getClientOriginalExtension(); // 3434343443.jpg
